@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using EventTriggerLibrary.Services;
+using EventTriggerLibrary.Interfaces;
 using Unity;
 
 namespace LoginConsole
@@ -12,8 +13,10 @@ namespace LoginConsole
             var container = new UnityContainer();
             container.RegisterType<IEventPublisher, EventPublisher>(TypeLifetime.Singleton);
             container.RegisterType<IAuthService, AuthService>(TypeLifetime.Singleton);
-            container.RegisterType<IConsumer<EventTriggerLibrary.Events.UserLoginSuccess>, EventConsumer>();
-            container.RegisterType<IConsumer<EventTriggerLibrary.Events.UserLoginFailure>, EventConsumer>();
+            container.RegisterType<IConsumer<EventTriggerLibrary.Events.UserLoginSuccess>, EventConsumer>("consumerA");
+            container.RegisterType<IConsumer<EventTriggerLibrary.Events.UserLoginSuccess>, EventConsumer1>("consumerB");
+            container.RegisterType<IConsumer<EventTriggerLibrary.Events.UserLoginFailure>, EventConsumer>("consumerA");
+            container.RegisterType<IConsumer<EventTriggerLibrary.Events.UserLoginFailure>, EventConsumer1>("consumerB");
 
             var authService = container.Resolve<IAuthService>();
 
