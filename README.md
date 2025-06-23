@@ -21,6 +21,16 @@ msbuild EventTrigger.sln
 
 Run the console application and enter credentials. The password `password` is considered valid.
 
+### Dynamic consumer registration
+
+Consumers can be loaded from additional assemblies by setting the `CONSUMER_ASSEMBLIES` environment variable before running the console application. Provide a semicolon-separated list of assembly names:
+
+```bash
+export CONSUMER_ASSEMBLIES="MyPlugin.dll;OtherConsumers.dll"
+```
+
+If the variable is not set, the `LoginConsole` project registers the consumers contained in the sample library.
+
 ### Multiple consumers
 
 `Unity` is configured to resolve all registered implementations of `IConsumer<TEvent>`.
@@ -39,3 +49,11 @@ container.RegisterEventConsumers(typeof(EventConsumer).Assembly);
 ```
 
 This eliminates the need to manually register each event/consumer pair.
+
+### Event metadata
+
+All events inherit from `EventBase`, which records the time the event was created. Consumers can use this timestamp for logging or ordering purposes.
+
+### Parallel event handling
+
+`EventPublisher` now invokes consumers concurrently and logs any exceptions so one failing handler does not block others.

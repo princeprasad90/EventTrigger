@@ -2,7 +2,10 @@ using EventTriggerLibrary.Interfaces;
 
 namespace EventTriggerLibrary.Events
 {
-    public class UserLoginFailure : IEvent
+    /// <summary>
+    /// Event published when a user login attempt fails.
+    /// </summary>
+    public class UserLoginFailure : EventBase
     {
         public string Username { get; }
         public string Reason { get; }
