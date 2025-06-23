@@ -27,3 +27,15 @@ Run the console application and enter credentials. The password `password` is co
 To handle an event with multiple consumers, register each consumer with a unique
 name. `EventConsumer` and `EventConsumer1` in this sample both handle login
 events and will be invoked for the same published event.
+
+### Automatic consumer registration
+
+The library exposes an extension method `RegisterEventConsumers` that scans an
+assembly for all `IConsumer<TEvent>` implementations and registers them using
+their type names. The `LoginConsole` project calls:
+
+```csharp
+container.RegisterEventConsumers(typeof(EventConsumer).Assembly);
+```
+
+This eliminates the need to manually register each event/consumer pair.
