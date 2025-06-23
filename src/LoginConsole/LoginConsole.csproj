@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EventTriggerLibrary\EventTriggerLibrary.csproj" />
+    <PackageReference Include="Unity" Version="5.11.10" />
+  </ItemGroup>
+</Project>
