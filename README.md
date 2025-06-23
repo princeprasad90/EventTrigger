@@ -6,6 +6,7 @@ This repository contains a simple example of triggering and consuming events whe
 
 - `EventTriggerLibrary` &ndash; class library that defines event interfaces, concrete events, and services for publishing and handling events.
 - `LoginConsole` &ndash; minimal console application demonstrating the login flow and event handling.
+- `WebLoginApp` &ndash; simple ASP.NET MVC web application with a login controller demonstrating integration.
 
 ## Usage
 
@@ -57,3 +58,7 @@ All events inherit from `EventBase`, which records the time the event was create
 ### Parallel event handling
 
 `EventPublisher` now invokes consumers concurrently and logs any exceptions so one failing handler does not block others.
+
+### ASP.NET integration
+
+For guidance on configuring Unity and automatic consumer registration in an ASP.NET web application, see [docs/WebApplicationSetup.md](docs/WebApplicationSetup.md).
