@@ -20,3 +20,10 @@ msbuild EventTrigger.sln
 ```
 
 Run the console application and enter credentials. The password `password` is considered valid.
+
+### Multiple consumers
+
+`Unity` is configured to resolve all registered implementations of `IConsumer<TEvent>`.
+To handle an event with multiple consumers, register each consumer with a unique
+name. `EventConsumer` and `EventConsumer1` in this sample both handle login
+events and will be invoked for the same published event.
