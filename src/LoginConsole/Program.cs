@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using EventTriggerLibrary.Services;
 using EventTriggerLibrary.Interfaces;
@@ -14,7 +16,20 @@ namespace LoginConsole
             var container = new UnityContainer();
             container.RegisterType<IEventPublisher, EventPublisher>(TypeLifetime.Singleton);
             container.RegisterType<IAuthService, AuthService>(TypeLifetime.Singleton);
-            container.RegisterEventConsumers(typeof(EventConsumer).Assembly);
+
+            var assemblyNames = Environment.GetEnvironmentVariable("CONSUMER_ASSEMBLIES");
+            if (!string.IsNullOrWhiteSpace(assemblyNames))
+            {
+                var assemblies = assemblyNames
+                    .Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(Assembly.Load)
+                    .ToArray();
+                container.RegisterEventConsumers(assemblies);
+            }
+            else
+            {
+                container.RegisterEventConsumers(typeof(EventConsumer).Assembly);
+            }
 
             var authService = container.Resolve<IAuthService>();
 
