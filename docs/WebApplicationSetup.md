@@ -1,6 +1,6 @@
 # Using EventTriggerLibrary in an ASP.NET Web Application
 
-This guide describes how to integrate the `EventTriggerLibrary` into an ASP.NET web application using the Unity container.
+This guide describes how to integrate the `EventTriggerLibrary` into an ASP.NET web application using the Unity container. A working example can be found in the `WebLoginApp` project included in this repository.
 
 ## Setup
 

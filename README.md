@@ -6,6 +6,7 @@ This repository contains a simple example of triggering and consuming events whe
 
 - `EventTriggerLibrary` &ndash; class library that defines event interfaces, concrete events, and services for publishing and handling events.
 - `LoginConsole` &ndash; minimal console application demonstrating the login flow and event handling.
+- `WebLoginApp` &ndash; simple ASP.NET MVC web application with a login controller demonstrating integration.
 
 ## Usage
 
