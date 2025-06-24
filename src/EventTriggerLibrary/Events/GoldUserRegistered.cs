@@ -5,7 +5,7 @@ namespace EventTriggerLibrary.Events
     /// <summary>
     /// Event published when a gold user registers.
     /// </summary>
-    public class GoldUserRegistered : EventBase
+    public class GoldUserRegistered : EventBase, IUserRegistered
     {
         public string Username { get; }
 

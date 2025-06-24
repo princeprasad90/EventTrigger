@@ -8,12 +8,8 @@ namespace EventTriggerLibrary.Services
     public class EventConsumer :
         IConsumer<UserLoginSuccess>,
         IConsumer<UserLoginFailure>,
-        IConsumer<StandardUserRegistered>,
-        IConsumer<StandardUserLoggedIn>,
-        IConsumer<GoldUserRegistered>,
-        IConsumer<GoldUserLoggedIn>,
-        IConsumer<DiamondUserRegistered>,
-        IConsumer<DiamondUserLoggedIn>
+        IConsumer<IUserRegistered>,
+        IConsumer<IUserLoggedIn>
     {
         public Task HandleAsync(UserLoginSuccess @event)
         {
@@ -27,39 +23,15 @@ namespace EventTriggerLibrary.Services
             return Task.CompletedTask;
         }
 
-        public Task HandleAsync(StandardUserRegistered @event)
+        public Task HandleAsync(IUserRegistered @event)
         {
-            Console.WriteLine($"Standard user registered: {@event.Username}");
+            Console.WriteLine($"User registered: {@event.Username} (event: {@event.GetType().Name})");
             return Task.CompletedTask;
         }
 
-        public Task HandleAsync(StandardUserLoggedIn @event)
+        public Task HandleAsync(IUserLoggedIn @event)
         {
-            Console.WriteLine($"Standard user logged in: {@event.Username}");
-            return Task.CompletedTask;
-        }
-
-        public Task HandleAsync(GoldUserRegistered @event)
-        {
-            Console.WriteLine($"Gold user registered: {@event.Username}");
-            return Task.CompletedTask;
-        }
-
-        public Task HandleAsync(GoldUserLoggedIn @event)
-        {
-            Console.WriteLine($"Gold user logged in: {@event.Username}");
-            return Task.CompletedTask;
-        }
-
-        public Task HandleAsync(DiamondUserRegistered @event)
-        {
-            Console.WriteLine($"Diamond user registered: {@event.Username}");
-            return Task.CompletedTask;
-        }
-
-        public Task HandleAsync(DiamondUserLoggedIn @event)
-        {
-            Console.WriteLine($"Diamond user logged in: {@event.Username}");
+            Console.WriteLine($"User logged in: {@event.Username} (event: {@event.GetType().Name})");
             return Task.CompletedTask;
         }
     }

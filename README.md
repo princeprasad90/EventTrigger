@@ -70,3 +70,11 @@ The library now includes sample events for separate user modules:
 registration and login events (e.g., `StandardUserRegistered` and
 `GoldUserLoggedIn`). Consumers can implement `IConsumer<TEvent>` for these
 events to run module-specific logic when they are published.
+
+### Grouping user module events
+
+When the same logic should run for every module, handle the events via the
+provided marker interfaces. `IUserRegistered` is implemented by each
+`*UserRegistered` event and `IUserLoggedIn` is implemented by the login events.
+A single consumer can implement `IConsumer<IUserRegistered>` or
+`IConsumer<IUserLoggedIn>` to receive them all without listing every type.
