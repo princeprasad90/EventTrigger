@@ -5,7 +5,7 @@ namespace EventTriggerLibrary.Events
     /// <summary>
     /// Event published when a diamond user logs in.
     /// </summary>
-    public class DiamondUserLoggedIn : EventBase
+    public class DiamondUserLoggedIn : EventBase, IUserLoggedIn
     {
         public string Username { get; }
 

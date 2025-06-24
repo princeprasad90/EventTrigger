@@ -5,7 +5,7 @@ namespace EventTriggerLibrary.Events
     /// <summary>
     /// Event published when a standard user registers.
     /// </summary>
-    public class StandardUserRegistered : EventBase
+    public class StandardUserRegistered : EventBase, IUserRegistered
     {
         public string Username { get; }
 

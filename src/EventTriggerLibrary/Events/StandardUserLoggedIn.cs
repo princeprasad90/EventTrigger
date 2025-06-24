@@ -5,7 +5,7 @@ namespace EventTriggerLibrary.Events
     /// <summary>
     /// Event published when a standard user logs in.
     /// </summary>
-    public class StandardUserLoggedIn : EventBase
+    public class StandardUserLoggedIn : EventBase, IUserLoggedIn
     {
         public string Username { get; }
 
