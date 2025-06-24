@@ -62,3 +62,11 @@ All events inherit from `EventBase`, which records the time the event was create
 ### ASP.NET integration
 
 For guidance on configuring Unity and automatic consumer registration in an ASP.NET web application, see [docs/WebApplicationSetup.md](docs/WebApplicationSetup.md).
+
+### User modules
+
+The library now includes sample events for separate user modules:
+`StandardUser`, `GoldUser`, and `DiamondUser`. Each module defines its own
+registration and login events (e.g., `StandardUserRegistered` and
+`GoldUserLoggedIn`). Consumers can implement `IConsumer<TEvent>` for these
+events to run module-specific logic when they are published.
