@@ -9,10 +9,12 @@ namespace EventTriggerLibrary.Events
     public class UserLoginSuccess : EventBase
     {
         public string Username { get; }
+        public UserType UserType { get; }
 
-        public UserLoginSuccess(string username)
+        public UserLoginSuccess(string username, UserType userType)
         {
             Username = username;
+            UserType = userType;
         }
     }
 }

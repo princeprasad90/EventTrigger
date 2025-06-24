@@ -13,13 +13,13 @@ namespace EventTriggerLibrary.Services
     {
         public Task HandleAsync(UserLoginSuccess @event)
         {
-            Console.WriteLine($"Login succeeded for {@event.Username}");
+            Console.WriteLine($"Login succeeded for {@event.Username} ({@event.UserType})");
             return Task.CompletedTask;
         }
 
         public Task HandleAsync(UserLoginFailure @event)
         {
-            Console.WriteLine($"Login failed for {@event.Username}: {@event.Reason}");
+            Console.WriteLine($"Login failed for {@event.Username} ({@event.UserType}): {@event.Reason}");
             return Task.CompletedTask;
         }
 

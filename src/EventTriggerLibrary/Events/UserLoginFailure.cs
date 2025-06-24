@@ -9,11 +9,13 @@ namespace EventTriggerLibrary.Events
     {
         public string Username { get; }
         public string Reason { get; }
+        public UserType UserType { get; }
 
-        public UserLoginFailure(string username, string reason)
+        public UserLoginFailure(string username, string reason, UserType userType)
         {
             Username = username;
             Reason = reason;
+            UserType = userType;
         }
     }
 }

@@ -70,6 +70,8 @@ The library now includes sample events for separate user modules:
 registration and login events (e.g., `StandardUserRegistered` and
 `GoldUserLoggedIn`). Consumers can implement `IConsumer<TEvent>` for these
 events to run module-specific logic when they are published.
+`UserLoginSuccess` and `UserLoginFailure` also expose a `UserType` value so
+handlers can react differently based on the user's classification.
 
 ### Grouping user module events
 
