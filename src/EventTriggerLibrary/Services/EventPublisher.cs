@@ -17,6 +17,12 @@ namespace EventTriggerLibrary.Services
 
         public async Task PublishAsync<TEvent>(TEvent @event) where TEvent : IEvent
         {
+            if (@event is IHasUserType typedEvent)
+            {
+                // Demonstrate that the publisher can access the user type via the interface
+                Console.WriteLine($"Publishing {@event.GetType().Name} for user type {typedEvent.UserType.Name}");
+            }
+
             var handlers = _container.ResolveAll<IConsumer<TEvent>>();
 
             var tasks = new List<Task>();
