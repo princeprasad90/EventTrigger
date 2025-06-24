@@ -6,13 +6,15 @@ namespace EventTriggerLibrary.Events
     /// Event published when a user successfully logs in.
     /// Inherits from <see cref="EventBase"/> to provide a timestamp.
     /// </summary>
-    public class UserLoginSuccess : EventBase
+    public class UserLoginSuccess : EventBase, IHasUserType
     {
         public string Username { get; }
+        public IUserType UserType { get; }
 
-        public UserLoginSuccess(string username)
+        public UserLoginSuccess(string username, IUserType userType)
         {
             Username = username;
+            UserType = userType;
         }
     }
 }
